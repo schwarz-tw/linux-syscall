@@ -1,4 +1,4 @@
-# Steps to adding your syscall to the kernel.
+# Steps to add your syscall to the kernel.
 
 Base directory: `/usr/src/kernels/{uname -r}/source`
 
