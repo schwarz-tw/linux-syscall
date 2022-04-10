@@ -21,6 +21,17 @@ in my case, it's at line 680.
 obj-y:=mycall.o
 ```
 
+In `mycall/mycall.c`:
+
+```c
+#include <linux/kernel.h>
+asmlinkage long sys_mycall(void)
+{
+  printk("mycall..\n");
+  return 0;
+}
+```
+
 3. In Makefile (in the base directory), find the line started with `core-y` and append your syscall source code directory.
 
 ```Makefile
