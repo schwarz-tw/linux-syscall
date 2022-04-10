@@ -2,7 +2,7 @@
 
 Base directory: `/usr/src/kernels/{uname -r}/source`
 
-1. Find the last syscall number and append your syscall.
+### 1. Find the last syscall number and append your syscall.
 
 In `arch/x86/include/asm/unistd_64.h`:
 
@@ -15,7 +15,7 @@ __SYSCALL(__NR_mycall, sys_mycall)
 
 in my case, it's at line 680.
 
-2. Mkdir `mycall` and in `mycall/Makefile`:
+### 2. Mkdir `mycall` and in `mycall/Makefile`:
 
 ```Makefile
 obj-y:=mycall.o
@@ -32,7 +32,7 @@ asmlinkage long sys_mycall(void)
 }
 ```
 
-3. In Makefile (in the base directory), find the line started with `core-y` and append your syscall source code directory.
+### 3. In Makefile (in the base directory), find the line started with `core-y` and append your syscall source code directory.
 
 ```Makefile
 core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
@@ -40,7 +40,7 @@ core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
 
 in my case, it's at line 688.
 
-4. Compile the kernel.
+### 4. Compile the kernel.
 
 - `make config` or `make menuconfig`
 - `make`
@@ -48,7 +48,7 @@ in my case, it's at line 688.
 - `make install`
 - `sync && sudo reboot` 
 
-5. Test your syscall.
+### 5. Test your syscall.
 
 Sample code (test_call.c):
 ```c
