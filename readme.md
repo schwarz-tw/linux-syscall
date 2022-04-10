@@ -32,7 +32,15 @@ asmlinkage long sys_mycall(void)
 }
 ```
 
-### 3. In Makefile (in the base directory), find the line started with `core-y` and append your syscall source code directory.
+### 3. Edit `include/linux/syscalls.h`, append this line:
+
+```
+asmlinkage long sys_mycall(void);
+```
+
+in my case, it's at line 829.
+
+### 4. In Makefile (in the base directory), find the line started with `core-y` and append your syscall source code directory.
 
 ```Makefile
 core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
@@ -40,7 +48,7 @@ core-y          += kernel/ mm/ fs/ ipc/ security/ crypto/ block/ mycall/
 
 in my case, it's at line 688.
 
-### 4. Compile the kernel.
+### 5. Compile the kernel.
 
 - `make config` or `make menuconfig`
 - `make`
@@ -48,7 +56,7 @@ in my case, it's at line 688.
 - `make install`
 - `sync && sudo reboot` 
 
-### 5. Test your syscall.
+### 6. Test your syscall.
 
 Sample code (test_call.c):
 ```c
