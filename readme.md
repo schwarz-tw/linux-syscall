@@ -15,6 +15,22 @@ __SYSCALL(__NR_mycall, sys_mycall)
 
 in my case, it's at line 680.
 
+For x86 system, in `arch/x86/kernel/syscall_table_32.S`, append:
+
+```
+        .long sys_mycall
+```
+
+in my case, it's at line 347.
+
+And, in `arch/x86/include/asm/unistd_32.h`, append:
+
+```
+#define __NR_mycall             346
+```
+
+in my case, it's at line 353.
+
 ### 2. Mkdir `mycall` and in `mycall/Makefile`:
 
 ```Makefile
