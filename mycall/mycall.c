@@ -1,7 +1,7 @@
 #include <linux/kernel.h>
-asmlinkage long sys_mycall(void)
+asmlinkage long sys_mycall(char* msg)
 {
-  printk("mycall..\n");
+  printk("%.*s\n", 100, msg);
   return 0;
 }
 
