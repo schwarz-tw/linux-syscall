@@ -73,7 +73,7 @@ int main(int argc,char **argv)
   long int ret;
   ret = syscall(__NR_mycall);
  
-  return 0;
+  return ret;
  
 }
 ```
