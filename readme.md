@@ -1,6 +1,6 @@
 # Steps to add your syscall to the kernel.
 
-Base directory: `/usr/src/kernels/{uname -r}/source`
+Base directory: `/usr/src/kernels/{uname -r}/source` or `/lib/modules/{uname -r}/source`
 
 ### 1. Find the last syscall number and append your syscall.
 
